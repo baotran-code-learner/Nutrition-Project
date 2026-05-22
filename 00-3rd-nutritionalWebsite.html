@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nutrition Tracking</title>
+
+    <link
+      rel="stylesheet"
+      href="styles/00-3rd-nutritionalWebsite.css">
+
+  </head>
+  <body>
+    <p class="welcome-message">Welcome to the Nutritional Tracking Website!</p>
+
+    <div class="input-design-grid">
+      <label>Your carbohydrate intake (g):</label>
+      <input placeholder="0" class="js-carb input-design">
+      <label>Your protein intake (g):</label>
+      <input placeholder="0" class="js-protein input-design">
+      <label>Your fat intake (g):</label>
+      <input placeholder="0" class="js-fat input-design">
+      <label>Or you can directly type in your calories intake (kcal):</label>
+      <input placeholder="0" class="js-calories-intake input-design" onkeydown="handleEnterKey(event)">
+    </div>
+
+    <p>
+    <button class="calculate-button" onclick="calculateTotalCalories()">Calculate</button>
+
+    <button class="reset-button" onclick="
+      totalCalories = 0;
+      localStorage.setItem('totalCalories',JSON.stringify(totalCalories));
+      document.querySelector('.js-display-message').innerHTML = `Total calories consumption: ${totalCalories} calories`
+    ">Reset</button>
+    </p>
+    
+    <p class="js-display-message"></p>
+    <input class="js-date-input date-input" type="date">
+    <button onclick="
+      addCaloriesRecords()
+    " class="add-button">Add</button>
+
+    <div class="table-header">
+      <div>Calories (kcal)</div>
+      <div>Date</div>
+      <div>Note</div>
+    </div>
+
+    <div class="js-nutrition-record nutrition-record-grid"></div>
+
+    <script src="scripts/00-3rd-nutritionalWebsite.js"></script>
+  </body>
+</html>

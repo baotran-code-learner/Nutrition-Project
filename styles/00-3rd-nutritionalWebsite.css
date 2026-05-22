@@ -1,0 +1,85 @@
+.body {
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+.welcome-message {
+  font-size: 30px;
+}
+
+.input-design-grid {
+  display: grid;
+  grid-template-columns: 350px 200px;
+  column-gap: 0px;
+  row-gap: 10px;
+  align-items: center;
+}
+
+.input-design {
+  padding: 6px;
+  width: 70px;
+}
+
+.calculate-button {
+  margin: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  background-color: wheat;
+  cursor: pointer;
+}
+
+.reset-button {
+  margin: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  background-color: rgb(179, 245, 238);
+  cursor: pointer;
+}
+
+.notice-line {
+  margin-top: 40px;
+}
+
+.nutrition-record-grid {
+  display: grid;
+  grid-template-columns: 130px 150px 250px 150px;
+  column-gap: 15px;
+  row-gap: 10px;
+  align-items: center;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 150px 200px 250px;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: center;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.date-input,
+.add-button {
+  padding: 6px 15px;
+  font-size: 15px;
+}
+
+.add-button {
+  background-color: green;
+  color: white ;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
