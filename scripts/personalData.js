@@ -1,25 +1,71 @@
 let foodAllergensRecord = JSON.parse(localStorage.getItem('foodAllergensRecord')) || [];
 let foodIntoleranceRecord = JSON.parse(localStorage.getItem('foodIntoleranceRecord')) || [];
 
-savePersonalData(
-  'js-add-button-food-allergens',
-  'js-food-allergen-input',
-  foodAllergensRecord,
-  'foodAllergensRecord',
-  'js-display-food-allergens'
-);
+setupFoodList({
+  buttonClass: 'js-add-button-food-allergens',
+  inputClass: 'js-food-allergen-input',
+  displayClass: 'js-display-food-allergens',
+  storageKey: 'foodAllergensRecord'
+});
 
-savePersonalData(
-  'js-add-button-food-intolerance',
-  'js-food-intolerance-input',
-  foodIntoleranceRecord,
-  'foodIntoleranceRecord',
-  'js-display-food-intolerance'
-);
+setupFoodList({
+  buttonClass: 'js-add-button-food-intolerance',
+  inputClass: 'js-food-intolerance-input',
+  displayClass: 'js-display-food-intolerance',
+  storageKey: 'foodIntoleranceRecord'
+});
 
-renderData (foodAllergensRecord, 'js-display-food-allergens', 'foodAllergensRecord');
-renderData(foodIntoleranceRecord, 'js-display-food-intolerance', 'foodIntoleranceRecord');
 
+// A better version
+function setupFoodList({ buttonClass, inputClass, displayClass, storageKey}) {
+  let foodDataArray = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  renderData();
+
+  document.querySelector(`.${buttonClass}`)
+    .addEventListener('click', () => {
+      const inputElement = document.querySelector(`.${inputClass}`);
+      const foodData = inputElement.value;
+
+      foodDataArray.push(foodData);
+
+      localStorage.setItem(storageKey, JSON.stringify(foodDataArray));
+
+      inputElement.value = '';
+
+      renderData ();
+    });
+
+  function renderData() {
+    let recordHTML = '';
+
+    foodDataArray.forEach((data, index) => {
+      recordHTML += `
+        <div class="food-record">
+          <span>${data}</span>
+          <button class="js-remove-button" data-index=${index}>Remove</button>
+        </div
+      `;
+    });
+
+    document.querySelector(`.${displayClass}`)
+      .innerHTML = recordHTML;
+
+    document.querySelectorAll('.js-remove-button')
+      .forEach((removeButton) => {
+        removeButton.addEventListener('click', () => {
+          const index = removeButton.dataset.index;
+          foodDataArray.splice(index, 1);
+
+          localStorage.setItem(storageKey, JSON.stringify(foodDataArray));
+
+          renderData ();
+        });
+      });
+  }
+}
+
+/* 
 function savePersonalData (buttonLink, inputLink, foodDataArray, storageKey, displayLink) {
   document.querySelector(`.${buttonLink}`)
     .addEventListener('click', () => {
@@ -60,10 +106,10 @@ function renderData (foodDataArray, displayLink, storageKey) {
         const index = removeButton.dataset.index;
         foodDataArray.splice(index, 1);
 
-
         localStorage.setItem(storageKey, JSON.stringify(foodDataArray));
 
         renderData (foodDataArray, displayLink, storageKey);
       });
     });
 }
+*/
