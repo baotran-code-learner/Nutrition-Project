@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Personal Data</title>
+
+    <link
+      rel="stylesheet"
+      href="styles/personalData.css"
+    >
+  </head>
+
+  <body>
+    <!-- link back to the main page-->
+    <a href="mainWebpage.html">
+      <span>Back to main page</span>
+    </a>
+
+    <div class="">
+      <label>Please enter your calorie goal</label>
+      <input placeholder="0" class="js-calorie-goal box-design">
+
+      <label>and range (in %)</label>
+      <input placeholder="0 %" class="box-design">
+    </div>
+
+    <p>Adverse Food Reaction</p>
+    <div class="input-design-grid">
+
+      <label>Please enter your food allergens (if any)</label>
+      <input class="js-food-allergen-input">
+      <button class="js-add-button-food-allergens">Add</button>
+      <div class="js-display-food-allergens"></div>
+
+      <label>Please enter your food intolerance (if any)</label>
+      <input class="js-food-intolerance-input">
+      <button class="js-add-button-food-intolerance">Add</button>
+      <div class="js-display-food-intolerance"></div>
+    </div>
+
+    <label>Do you have Celiac disease?</label>
+
+    <label>
+      <input type="radio" name="celiac-disease" value="yes">
+      Yes  
+    </label>
+
+    <label>
+      <input type="radio" name="celiac-disease" value="no">
+      No
+    </label>
+
+    <script type="module" src="scripts/personalData.js"></script>
+
+  </body>
+</html>

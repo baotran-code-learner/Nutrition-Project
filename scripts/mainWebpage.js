@@ -1,5 +1,5 @@
 let totalCalories = JSON.parse(localStorage.getItem('totalCalories')) || 0;
-const caloriesRecord = JSON.parse(localStorage.getItem('caloriesRecord')) || [];
+let caloriesRecord = JSON.parse(localStorage.getItem('caloriesRecord')) || [];
 
 /* Display total consumption upon opening the website */
 document.querySelector('.js-display-message')
@@ -7,7 +7,7 @@ document.querySelector('.js-display-message')
 renderCaloriesRecord();
 
 function calculateTotalCalories() {
-  const carbIntakeElement = document.querySelector('.js-carb')
+  const carbIntakeElement = document.querySelector('.js-carb');
   const carbIntake = carbIntakeElement.value;
   const proteinIntakeElement = document.querySelector('.js-protein');
   const proteinIntake = proteinIntakeElement.value;
@@ -20,11 +20,6 @@ function calculateTotalCalories() {
   document.querySelector('.js-display-message').innerHTML = `Total calories consumption is ${totalCalories} calories.`;
 
   localStorage.setItem('totalCalories', JSON.stringify(totalCalories));
-
-  /*
-  
-  }
-  */
 
   carbIntakeElement.value = '';
   fatIntakeElement.value = '';
@@ -92,7 +87,6 @@ function addCaloriesRecords () {
   }
      
   localStorage.setItem('caloriesRecord', JSON.stringify(caloriesRecord))
-  console.log(caloriesRecord);
 
   renderCaloriesRecord();
 

@@ -3,13 +3,21 @@
   <head>
     <title>Nutrition Tracking</title>
 
+    <!-- link to CSS -->
     <link
       rel="stylesheet"
-      href="styles/00-3rd-nutritionalWebsite.css">
-
+      href="styles/mainWebpage.css"
+    >
   </head>
+
   <body>
     <p class="welcome-message">Welcome to the Nutritional Tracking Website!</p>
+
+    <!-- Link the main webpage to personal data page -->
+    <a href="personalData.html">
+      <span>Your Data</span>
+      <p></p>
+    </a>
 
     <div class="input-design-grid">
       <label>Your carbohydrate intake (g):</label>
@@ -23,13 +31,13 @@
     </div>
 
     <p>
-    <button class="calculate-button" onclick="calculateTotalCalories()">Calculate</button>
+      <button class="calculate-button" onclick="calculateTotalCalories()">Calculate</button>
 
-    <button class="reset-button" onclick="
-      totalCalories = 0;
-      localStorage.setItem('totalCalories',JSON.stringify(totalCalories));
-      document.querySelector('.js-display-message').innerHTML = `Total calories consumption: ${totalCalories} calories`
-    ">Reset</button>
+      <button class="reset-button" onclick="
+        totalCalories = 0;
+        localStorage.setItem('totalCalories',JSON.stringify(totalCalories));
+        document.querySelector('.js-display-message').innerHTML = `Total calories consumption: ${totalCalories} calories`
+      ">Reset</button>
     </p>
     
     <p class="js-display-message"></p>
@@ -46,6 +54,6 @@
 
     <div class="js-nutrition-record nutrition-record-grid"></div>
 
-    <script src="scripts/00-3rd-nutritionalWebsite.js"></script>
+    <script type="module" src="scripts/mainWebpage.js"></script>
   </body>
 </html>
