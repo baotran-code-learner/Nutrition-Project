@@ -24,3 +24,7 @@ body {
   align-items: center;
   gap: 10px;
 }
+
+.hidden-display {
+  display: none;
+}

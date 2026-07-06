@@ -16,11 +16,19 @@
     </a>
 
     <div class="">
-      <label>Please enter your calorie goal</label>
-      <input placeholder="0" class="js-calorie-goal box-design">
+      <label for="calorie-goal">Your calorie goal is</label>
+      <input 
+        placeholder="> 0 kcal"
+        class="js-calorie-goal box-design hidden-display"
+        id="calorie-goal">
+      <span class="js-display-calorie-goal"></span>
 
-      <label>and range (in %)</label>
-      <input placeholder="0 %" class="box-design">
+      <label>and range is</label>
+      <input class='js-calorie-range box-design hidden-display' placeholder="0-100 %" >
+      <span class="js-display-calorie-range"></span>
+
+      <button class="js-calorie-save-setting-button calorie-save-setting-button">Save</button>
+      <button class="js-calorie-setting-update-button hidden-display">Update</button>
     </div>
 
     <p>Adverse Food Reaction</p>
