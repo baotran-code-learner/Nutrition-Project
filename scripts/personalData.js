@@ -40,17 +40,16 @@ function setupFoodList({ buttonClass, inputClass, displayClass, storageKey}) {
       inputElement.value = '';
 
       renderData ();
-    });
+    })
 
   function renderData() {
     let recordHTML = '';
 
+    // Render as direct grid items: data + button per entry
     foodDataArray.forEach((data, index) => {
       recordHTML += `
-        <div class="food-record">
-          <span>${data}</span>
-          <button class='js-remove-button-${storageKey}' data-index='${index}'>Remove</button>
-        </div
+        <div>${data}</div>
+        <button class='js-remove-button-${storageKey} remove-button' data-index='${index}'>Remove</button>
       `
     });
 

@@ -15,14 +15,53 @@ body {
 .box-design {
   width: 80px;
   height: 32px;
-  font-size-16px;
+  font-size: 16px;
   align-items: center;
 }
 
 .food-record {
-  display: flex; 
+  display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.adverse-food-reaction-text {
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 5px  ;
+}
+
+/* When grid is used, data + button are direct children of .display-input-grid */
+.display-input-grid > button {
+  justify-self: start;
+}
+
+.calorie-setting {
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+.food-intolerance-label {
+  margin-top: 20px;
+}
+
+.display-input-grid {
+  display: grid;
+  grid-template-columns: 120px 100px;
+  column-gap: 0px;
+  row-gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.remove-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 30px;
 }
 
 .hidden-display {

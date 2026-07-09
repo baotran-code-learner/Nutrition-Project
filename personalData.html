@@ -15,7 +15,8 @@
       <span>Back to main page</span>
     </a>
 
-    <div class="">
+    <div>
+      <div class="calorie-setting">Calorie Setting:</div>
       <label for="calorie-goal">Your calorie goal is</label>
       <input 
         placeholder="> 0 kcal"
@@ -31,18 +32,18 @@
       <button class="js-calorie-setting-update-button">Update</button>
     </div>
 
-    <p>Adverse Food Reaction</p>
-    <div class="input-design-grid">
+    <p class="adverse-food-reaction-text">Adverse Food Reaction:</p>
 
+    <div class="input-design-grid">
       <label>Please enter your food allergens (if any)</label>
       <input class="js-food-allergen-input">
       <button class="js-add-button-food-allergens">Add</button>
-      <div class="js-display-food-allergens"></div>
+      <div class="js-display-food-allergens display-input-grid"></div>
 
-      <label>Please enter your food intolerance (if any)</label>
+      <label class="food-intolerance-label">Please enter your food intolerance (if any)</label>
       <input class="js-food-intolerance-input">
       <button class="js-add-button-food-intolerance">Add</button>
-      <div class="js-display-food-intolerance"></div>
+      <div class="js-display-food-intolerance display-input-grid"></div>
     </div>
 
     <label>Do you have Celiac disease?</label>
