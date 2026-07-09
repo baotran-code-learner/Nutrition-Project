@@ -1,0 +1,5 @@
+- [ ] Verify `renderCaloriesRecord()` range comparison logic in `scripts/mainWebpage.js`.
+- [ ] Investigate why clicking **Calculate** doesn’t update message (likely JS error due to null DOM elements).
+- [ ] Fix runtime error in `scripts/personalData.js`: `Cannot set properties of null (setting 'innerHTML')` in `renderData()`.
+- [ ] Re-test main page Calculate after fixing any module-load errors.
+- [ ] Re-run quick manual checks: adding calories, adding records, deleting records.

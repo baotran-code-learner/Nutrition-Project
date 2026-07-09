@@ -23,8 +23,13 @@ function setupFoodList({ buttonClass, inputClass, displayClass, storageKey}) {
 
   renderData();
 
-  document.querySelector(`.${buttonClass}`)
-    .addEventListener('click', () => {
+  const buttonElement = document.querySelector(`.${buttonClass}`);
+  if (!buttonElement) {
+    console.warn(`Missing button element for class: ${buttonClass}`);
+    return;
+  }
+
+  buttonElement.addEventListener('click', () => {
       const inputElement = document.querySelector(`.${inputClass}`);
       const foodData = inputElement.value;
 
@@ -44,21 +49,26 @@ function setupFoodList({ buttonClass, inputClass, displayClass, storageKey}) {
       recordHTML += `
         <div class="food-record">
           <span>${data}</span>
-          <button class="js-remove-button" data-index=${index}>Remove</button>
+          <button class='js-remove-button-${storageKey}' data-index='${index}'>Remove</button>
         </div
-      `;
+      `
     });
 
-    document.querySelector(`.${displayClass}`)
-      .innerHTML = recordHTML;
+    const displayElement = document.querySelector(`.${displayClass}`);
+    if (!displayElement) {
+      console.warn(`Missing display element for class: ${displayClass}`);
+      return;
+    }
 
-    document.querySelectorAll('.js-remove-button')
+    displayElement.innerHTML = recordHTML;
+
+    document.querySelectorAll(`.js-remove-button-${storageKey}`)
       .forEach((removeButton) => {
         removeButton.addEventListener('click', () => {
-          const index = removeButton.dataset.index;
+          const index = Number(removeButton.dataset.index);
           foodDataArray.splice(index, 1);
 
-          localStorage.setItem(storageKey, JSON.stringify(foodDataArray));
+          localStorage.setItem(`${storageKey}`, JSON.stringify(foodDataArray));
 
           renderData ();
         });
@@ -68,14 +78,19 @@ function setupFoodList({ buttonClass, inputClass, displayClass, storageKey}) {
 
 
 // Save calorie setting
-let calorieGoal = JSON.parse(localStorage.getItem('calorieGoal')) || 0;
-let calorieRange = JSON.parse(localStorage.getItem('calorieRange')) || 0;
+export let calorieGoal = JSON.parse(localStorage.getItem('calorieGoal')) || 0;
+export let calorieRange = JSON.parse(localStorage.getItem('calorieRange')) || 0;
 
 setupCalorieSetting();
 
 function setupCalorieSetting() {
-  document.querySelector('.js-calorie-save-setting-button')
-    .addEventListener('click', () => {
+  const saveButton = document.querySelector('.js-calorie-save-setting-button');
+  if (!saveButton) {
+    console.warn('Missing .js-calorie-save-setting-button on this page');
+    return;
+  }
+
+  saveButton.addEventListener('click', () => {
       const calorieElement = document.querySelector('.js-calorie-goal')
       const calorie = Number(calorieElement.value);
 
@@ -127,10 +142,15 @@ function setupCalorieSetting() {
 
 updateCalorieSetting();
 
-document.querySelector('.js-display-calorie-goal')
-  .innerHTML = calorieGoal;
-document.querySelector('.js-display-calorie-range')
-  .innerHTML = `${calorieRange} %`;
+const calorieGoalDisplay = document.querySelector('.js-display-calorie-goal');
+if (calorieGoalDisplay) {
+  calorieGoalDisplay.innerHTML = `${calorieGoal} kcal`;
+}
+
+const calorieRangeDisplay = document.querySelector('.js-display-calorie-range');
+if (calorieRangeDisplay) {
+  calorieRangeDisplay.innerHTML = `${calorieRange} %`;
+}
 
 // Save/load Celiac disease (radio: yes/no)
 let celiacDisease = localStorage.getItem('celiacDisease') || '';

@@ -27,24 +27,19 @@
       <label>Your fat intake (g):</label>
       <input placeholder="0" class="js-fat input-design">
       <label>Or you can directly type in your calories intake (kcal):</label>
-      <input placeholder="0" class="js-calories-intake input-design" onkeydown="handleEnterKey(event)">
+      <input placeholder="0" class="js-calories-intake input-design">
     </div>
 
     <p>
-      <button class="calculate-button" onclick="calculateTotalCalories()">Calculate</button>
+      <button class="calculate-button js-calculate-button">Calculate</button>
 
-      <button class="reset-button" onclick="
-        totalCalories = 0;
-        localStorage.setItem('totalCalories',JSON.stringify(totalCalories));
-        document.querySelector('.js-display-message').innerHTML = `Total calories consumption: ${totalCalories} calories`
-      ">Reset</button>
+      <button class="js-reset-button reset-button">Reset</button>
     </p>
     
     <p class="js-display-message"></p>
+
     <input class="js-date-input date-input" type="date">
-    <button onclick="
-      addCaloriesRecords()
-    " class="add-button">Add</button>
+    <button class="js-add-button add-button">Add</button>
 
     <div class="table-header">
       <div>Calories (kcal)</div>
